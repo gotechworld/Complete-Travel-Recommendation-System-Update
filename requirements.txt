@@ -1,0 +1,9 @@
+streamlit
+datetime
+langchain
+langchain-community
+google-ai-generativelanguage
+langchain-google-genai
+dotenv
+reportlab
+
