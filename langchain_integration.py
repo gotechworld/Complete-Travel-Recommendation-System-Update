@@ -24,7 +24,7 @@ def get_llm():
 
         # Initialize the LLM
         return ChatGoogleGenerativeAI(
-            model="gemini-2.0-flash",
+            model="gemini-2.5-flash",
             temperature=0.7,
             max_output_tokens=2048,
             top_p=0.95,
