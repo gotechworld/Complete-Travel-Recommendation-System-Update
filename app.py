@@ -380,7 +380,7 @@ def main():
         destination = st.text_input("🏙️ Destination", "Paris")
         st.caption("Enter city, country, or region")
     with col2:
-        dates = st.text_input("📅 Travel Dates", "May 5-9, 2025")
+        dates = st.text_input("📅 Travel Dates", "August 5-9, 2025")
         st.caption("Format: Month Day-Day, Year")
     with col3:
         budget = st.number_input("💰 Budget ($)", min_value=100, value=5000, step=100)
@@ -604,7 +604,7 @@ def main():
                 Parse travel dates from various formats with robust error handling
 
                 Args:
-                    date_string (str): Date string in format like "May 5-9, 2025"
+                    date_string (str): Date string in format like "August 5-9, 2025"
 
                 Returns:
                     tuple: (start_date, end_date, month_num) or None if parsing fails
@@ -612,9 +612,9 @@ def main():
                 try:
                     # Define month mappings
                     months = {
-                        "january": 1, "february": 2, "march": 3, "april": 4, "may": 5, "june": 6,
+                        "january": 1, "february": 2, "march": 3, "april": 4, "August": 5, "june": 6,
                         "july": 7, "august": 8, "september": 9, "october": 10, "november": 11, "december": 12,
-                        "jan": 1, "feb": 2, "mar": 3, "apr": 4, "may": 5, "jun": 6,
+                        "jan": 1, "feb": 2, "mar": 3, "apr": 4, "August": 5, "jun": 6,
                         "jul": 7, "aug": 8, "sep": 9, "oct": 10, "nov": 11, "dec": 12
                     }
 
@@ -624,14 +624,14 @@ def main():
 
                     if match:
                         month_name, start_day, end_day, year = match.groups()
-                        month_num = months.get(month_name.lower(), 5)  # Default to May if not found
+                        month_num = months.get(month_name.lower(), 5)  # Default to August if not found
 
                         start_date = datetime(int(year), month_num, int(start_day))
                         end_date = datetime(int(year), month_num, int(end_day))
 
                         return start_date, end_date, month_num
 
-                    # Try alternative format: "Month Year" (e.g., "May 2025")
+                    # Try alternative format: "Month Year" (e.g., "August 2025")
                     alt_pattern = r"([a-zA-Z]+)\s+(\d{4})"
                     alt_match = re.search(alt_pattern, date_string)
 
@@ -686,7 +686,7 @@ def main():
 
                 # Paris weather data by season
                 if destination.lower() == "paris":
-                    if month_num == 5:  # May
+                    if month_num == 5:  # August
                         return {
                             "icons": ["🌤️", "🌦️", "☀️", "🌤️", "☀️"],
                             "temperatures": ["19°C/10°C", "18°C/11°C", "21°C/12°C", "20°C/11°C", "22°C/13°C"],
@@ -1163,11 +1163,11 @@ def main():
                     api_source = next((day['api_source'] for day in weather_data if 'api_source' in day), "Weather API")
                     st.caption(f"Weather data provided by {api_source}. Last updated: {datetime.now().strftime('%Y-%m-%d %H:%M')}.")
                 else:
-                    st.caption("Note: Weather forecast is based on historical averages and may vary. Check closer to your travel date for more accurate predictions.")
+                    st.caption("Note: Weather forecast is based on historical averages and August vary. Check closer to your travel date for more accurate predictions.")
 
             except Exception as e:
                 st.warning(f"Could not generate weather summary: {str(e)}")
-                st.caption("Note: Weather forecast is based on historical averages and may vary. Check closer to your travel date for more accurate predictions.")
+                st.caption("Note: Weather forecast is based on historical averages and August vary. Check closer to your travel date for more accurate predictions.")
             # Local tips
             st.markdown("---")
             st.subheader("💡 Local Tips")
@@ -1186,7 +1186,7 @@ def main():
                         **Best Times to Eat:**
                         - Cafés open early (7-8am)
                         - Lunch: 12-2pm
-                        - Dinner: 7:30-10pm (restaurants may not open before 7pm)
+                        - Dinner: 7:30-10pm (restaurants August not open before 7pm)
             
                         **Ordering Water:**
                         - Ask for "une carafe d'eau" for free tap water
