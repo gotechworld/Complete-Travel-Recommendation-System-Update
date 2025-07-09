@@ -1,0 +1,56 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: streamlit-app
+  labels:
+    app: streamlit-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: streamlit-app
+  template:
+    metadata:
+      labels:
+        app: streamlit-app
+    spec:
+      imagePullSecrets:
+      - name: gcr-json-key  # You'll need to create this secret
+      containers:
+      - name: streamlit-app
+        image: europe-west4-docker.pkg.dev/gcp-agentic-hackathon-454714/agent-travel-planner/agent-travel-planner:0.1  # Replace with your image
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8501
+        envFrom:
+        - configMapRef:
+            name: streamlit-app-config
+        - secretRef:
+            name: streamlit-app-secrets
+        resources:
+          requests:
+            memory: "256Mi"
+            cpu: "100m"
+          limits:
+            memory: "512Mi"
+            cpu: "500m"
+        securityContext:
+          runAsUser: 1000
+          runAsGroup: 1000
+          allowPrivilegeEscalation: false
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 8501
+          initialDelaySeconds: 10
+          periodSeconds: 5
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 8501
+          initialDelaySeconds: 30
+          periodSeconds: 10
+          timeoutSeconds: 5
+          failureThreshold: 3
+      securityContext:
+        runAsNonRoot: true
