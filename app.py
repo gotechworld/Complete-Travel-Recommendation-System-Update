@@ -380,7 +380,7 @@ def main():
         destination = st.text_input("🏙️ Destination", "Paris")
         st.caption("Enter city, country, or region")
     with col2:
-        dates = st.text_input("📅 Travel Dates", "August 5-9, 2025")
+        dates = st.text_input("📅 Travel Dates", "December 5-9, 2025")
         st.caption("Format: Month Day-Day, Year")
     with col3:
         budget = st.number_input("💰 Budget ($)", min_value=100, value=5000, step=100)
