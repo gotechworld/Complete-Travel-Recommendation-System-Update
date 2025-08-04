@@ -350,7 +350,7 @@ def create_pdf(content, destination, dates, budget, hotels, flights, activities)
             canvas.setFillColor(colors.darkblue)
 
             # Company name and copyright
-            canvas.drawCentredString(self.width/2, 45, "Smart Travel - Your Journey, Our Expertise")
+            canvas.drawCentredString(self.width/2, 45, "SC NoiTreMedia SRL - Your Journey, Our Expertise")
             canvas.drawCentredString(self.width/2, 30, "Email: petru.giurca@pm.me | Phone: +40 754215612")
 
             # Add page number
