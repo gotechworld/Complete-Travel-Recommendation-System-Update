@@ -1060,7 +1060,7 @@ def main():
                             </div>
                             """, unsafe_allow_html=True)
 
-            # Weather summary with enhanced calculations and visualization
+            # Weather summary with enhanced calculations and visualizations
             try:
                 # Calculate averages and statistics
                 avg_high = sum([float(day['temp'].split('/')[0].replace('°C', '')) for day in weather_data]) / len(weather_data)
